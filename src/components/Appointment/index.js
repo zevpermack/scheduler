@@ -4,6 +4,7 @@ import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import Confirm from "components/Appointment/Confirm";
+import Error from "components/Appointment/Error"
 import Status from "components/Appointment/Status";
 import useVisualMode from 'hooks/useVisualMode';
 import Form from './Form';
@@ -17,6 +18,8 @@ export default function Appointment(props) {
   const CANCELLING = "CANCELLING";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE"
+  const ERROR_DELETE = "ERROR_DELETE"
 
   function save(name, interviewer) {
     transition(SAVING);
@@ -25,8 +28,12 @@ export default function Appointment(props) {
       interviewer
     };
     props.bookInterview(props.id, interview)
-    .then(() => {
+    .then((res) => {
       transition(SHOW);
+    })
+    .catch((err) => {
+      transition(ERROR_SAVE, true);
+      console.log('Book Interview RES: ', err);
     })
     
   }
@@ -36,10 +43,14 @@ export default function Appointment(props) {
   }
 
   function cancel() {
-    transition(CANCELLING);
+    transition(CANCELLING, true);
     props.cancelInterview(props.id)
-    .then(() => {
+    .then((res) => {
       transition(EMPTY);
+    })
+    .catch((err) => {
+      console.log('THIS IS CANCEL ERR: ', err)
+      transition(ERROR_DELETE, true);
     })
   }
 
@@ -63,6 +74,8 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={save}  />}
       {mode === EDIT && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={save} interviewer={props.interview.interviewer.id} student={props.interview.student} />}
+      {mode === ERROR_DELETE && <Error onClose={() => back()} />}
+      {mode === ERROR_SAVE && <Error onClose={() => back()} />}
     </article>
   );
 }
