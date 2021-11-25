@@ -27,8 +27,8 @@ export default function Form(props) {
             value={student}
             onChange={(e) => {
               setStudent(e.target.value);
-            }}
-          />
+            }}>
+            </input>
         </form>
         <InterviewerList 
           interviewers={props.interviewers}
