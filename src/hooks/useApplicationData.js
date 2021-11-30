@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { getAppointmentsForDay } from "helpers/selectors";
 import { setSpots } from "helpers/selectors";
 
 
