@@ -1,6 +1,8 @@
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import { setSpots, getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 const state = {
+  day : "Monday",
+  
   interviewers: {
     "1": {  
       "id": 1,
@@ -18,13 +20,15 @@ const state = {
       id: 1,
       name: "Monday",
       appointments: [1, 2, 3],
-      interviewers: [2]
+      interviewers: [2],
+      spots: 3
     },
     {
       id: 2,
       name: "Tuesday",
       appointments: [4, 5],
-      interviewers: [2]
+      interviewers: [2],
+      spots: 2
     }
   ],
   appointments: {
@@ -118,4 +122,3 @@ test("getInterview returns null if no interview is booked", () => {
   const result = getInterview(state, state.appointments["2"].interview);
   expect(result).toBeNull();
 });
-
