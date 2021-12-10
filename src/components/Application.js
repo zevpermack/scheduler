@@ -18,7 +18,7 @@ export default function Application(props) {
 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-  
+
     return (
       <Appointment
         key={appointment.id}
@@ -42,7 +42,7 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-        <DayList
+          <DayList
             days={state.days}
             value={state.day}
             onChange={setDay}
@@ -53,17 +53,8 @@ export default function Application(props) {
           src="images/lhl.png"
           alt="Lighthouse Labs"
         />
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
       </section>
       <section className="schedule">
-        {/* {dailyAppointments.map(appointment => {
-          return(
-          <Appointment 
-            key={appointment.id}
-            {...appointment}
-          />
-          )
-        })} */}
         {schedule}
         <Appointment key="last" time="5pm" />
       </section>

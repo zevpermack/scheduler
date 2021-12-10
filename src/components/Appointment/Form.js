@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from 'components/Button'
 import InterviewerList from 'components/InterviewerList';
 
@@ -41,11 +41,11 @@ export default function Form(props) {
               setStudent(e.target.value);
             }}
             data-testid="student-name-input">
-              
-            </input>
+
+          </input>
         </form>
         <section className="appointment__validation">{error}</section>
-        <InterviewerList 
+        <InterviewerList
           interviewers={props.interviewers}
           onChange={setInterviewer}
           value={interviewer}
