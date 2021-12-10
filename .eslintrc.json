@@ -1,10 +1,30 @@
-
 {
-  "eslintConfig": {
+    "env": {
+        "browser": true,
+        "jest": true
+    },
     "extends": [
-      "plugin:cypress/recommended"
-    ]
-  },
-  "extends": "react-app",
-  "parser": "babel-eslint"
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 7,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+      "import/no-unresolved": "off",
+      "react/jsx-filename-extension": "off",
+      "react/function-component-definition" : "off",
+      "eslint-disable react/jsx-no-bind" : "off",
+      "eslint-disable react/prop-types" : "on",
+      "eslint-disable react/destructuring-assignment" : "off",
+      "eslint-disable jsx-a11y/no-noninteractive-element-interactions" : "off",
+      "eslint-disable jsx-a11y/click-events-have-key-events" : "off"
+      
+    }
 }
