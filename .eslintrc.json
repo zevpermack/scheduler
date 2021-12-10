@@ -1,4 +1,10 @@
+
 {
+  "eslintConfig": {
+    "extends": [
+      "plugin:cypress/recommended"
+    ]
+  },
   "extends": "react-app",
   "parser": "babel-eslint"
 }
